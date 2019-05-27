@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: kafka-consumer-atelier
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: mkumar8
+Built-By: 12499
 Implementation-Vendor-Id: com.kafka.consumer
-Build-Jdk: 1.8.0_181
+Build-Jdk: 1.8.0_211
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/kafka-consumer-atelier
 Created-By: Maven Integration for Eclipse

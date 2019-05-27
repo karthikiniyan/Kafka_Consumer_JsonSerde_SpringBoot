@@ -12,6 +12,7 @@ import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 import com.kafka.consumer.service.Weather;
+import com.kafka.consumer.service.WeatherMetrics;
 
 import org.apache.kafka.common.serialization.StringDeserializer;
 
@@ -40,16 +41,16 @@ public class ConsumerConfig {
     }
 	
 	 @Bean
-	  public ConsumerFactory<String, Weather> consumerFactory() {
-	    return new DefaultKafkaConsumerFactory<String, Weather>(ConsConfig(),new StringDeserializer(),
-                new JsonDeserializer<>(Weather.class,false));
+	  public ConsumerFactory<String, WeatherMetrics> consumerFactory() {
+	    return new DefaultKafkaConsumerFactory<String, WeatherMetrics>(ConsConfig(),new StringDeserializer(),
+                new JsonDeserializer<>(WeatherMetrics.class,false));
 	  }
 	
 	 @Bean
-	  public ConcurrentKafkaListenerContainerFactory<String, Weather> kafkaListenerContainerFactory() {
+	  public ConcurrentKafkaListenerContainerFactory<String, WeatherMetrics> kafkaListenerContainerFactory() {
 
-	    final ConcurrentKafkaListenerContainerFactory<String, Weather> factory
-	        = new ConcurrentKafkaListenerContainerFactory<String, Weather>();
+	    final ConcurrentKafkaListenerContainerFactory<String, WeatherMetrics> factory
+	        = new ConcurrentKafkaListenerContainerFactory<String, WeatherMetrics>();
 
 	    factory.setConsumerFactory(consumerFactory());
 

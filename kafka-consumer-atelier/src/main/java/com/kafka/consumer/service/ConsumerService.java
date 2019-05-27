@@ -35,8 +35,8 @@ public class ConsumerService {
 		 Weather dat=new Weather();
 		 dat.setCity("sgsdg");
 	}
-	 @KafkaListener(topics = "meenatopic")
-	    public void receive(@Payload Weather data,
+	 @KafkaListener(topics = "Streams_output")
+	    public void receive(@Payload WeatherMetrics data,
 	                        @Headers MessageHeaders headers) {
 		 LOGGER.info("received DataModel='{}'", data);
 
