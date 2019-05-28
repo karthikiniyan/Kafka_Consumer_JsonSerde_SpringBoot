@@ -37,12 +37,12 @@ public class ConsumerService {
 	 * }
 	 */
 	public void insert() {
-		 Weather dat=new Weather();
+		 WeatherMetrics dat=new WeatherMetrics();
 		 dat.setCity("sgsdg");
 		 userRepository.save(dat);
 	}
 	 @KafkaListener(topics = "meenatopic")
-	    public void receive(@Payload Weather data,
+	    public void receive(@Payload WeatherMetrics data,
 	                        @Headers MessageHeaders headers) {
 		 LOGGER.info("received DataModel='{}'", data);
 		 userRepository.save(data);
