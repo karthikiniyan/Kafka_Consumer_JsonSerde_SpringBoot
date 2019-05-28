@@ -18,7 +18,6 @@ import org.apache.kafka.common.serialization.StringDeserializer;
 
 @Configuration
 @EnableKafka
-
 public class ConsumerConfig {
 	
 
@@ -34,7 +33,6 @@ public class ConsumerConfig {
 	    props.put(org.apache.kafka.clients.consumer.ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
 	    props.put(org.apache.kafka.clients.consumer.ConsumerConfig.GROUP_ID_CONFIG, "jsonexample");
 	    props.put(org.apache.kafka.clients.consumer.ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-	    props.put(JsonDeserializer.TRUSTED_PACKAGES, "com.kafka.producer.service.DataModel");
 		return props;
     	
     }

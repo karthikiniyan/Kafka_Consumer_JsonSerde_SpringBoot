@@ -12,12 +12,11 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 public class MongoDBConfig {
 
 
-   @Bean
-    CommandLineRunner commandLineRunner(WeatherRepository userRepository) {
-        return strings -> {
-            userRepository.save(new Weather());
-            
-            
-        };
-   }
+	/*
+	 * @Bean CommandLineRunner commandLineRunner(WeatherRepository userRepository) {
+	 * return strings -> { userRepository.save(new Weather());
+	 * 
+	 * 
+	 * }; }
+	 */
 }
