@@ -41,11 +41,11 @@ public class ConsumerService {
 		 dat.setCity("sgsdg");
 		 userRepository.save(dat);
 	}
-	 //@KafkaListener(topics = "meenatopic")
+	 @KafkaListener(topics = "meenatopic")
 	    public void receive(@Payload Weather data,
 	                        @Headers MessageHeaders headers) {
 		 LOGGER.info("received DataModel='{}'", data);
-
+		 userRepository.save(data);
 	        headers.keySet().forEach(key -> {
 	        	LOGGER.info("{}: {}", key, headers.get(key));
 	        });
