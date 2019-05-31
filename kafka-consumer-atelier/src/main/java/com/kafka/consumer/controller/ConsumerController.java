@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.kafka.consumer.service.ConsumerService;
 
-@RestController("/kafka")
+@RestController
 public class ConsumerController {
 
 	@Autowired	
@@ -16,7 +16,7 @@ public class ConsumerController {
 	@GetMapping("/receive/{id}/{name}")
     public boolean receiveMessage(String name,String id) {
    // consumerservice.receiveMessage("receivetext");
-		
+		consumerservice.insert();
 		return true;
 	}		
 	

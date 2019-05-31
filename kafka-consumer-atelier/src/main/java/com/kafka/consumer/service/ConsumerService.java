@@ -4,11 +4,14 @@ import java.util.concurrent.CountDownLatch;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
+
+import com.kafka.consumer.mongodb.repository.WeatherRepository;
 
 @Service
 public class ConsumerService {
@@ -17,6 +20,8 @@ public class ConsumerService {
 
 	private final CountDownLatch latch = new CountDownLatch(1);
 	
+	@Autowired
+	private WeatherRepository userRepository;
 	public CountDownLatch getLatch(){
 		
 		return latch;
@@ -32,14 +37,17 @@ public class ConsumerService {
 	 * }
 	 */
 	public void insert() {
-		 Weather dat=new Weather();
+		 WeatherMetrics dat=new WeatherMetrics();
 		 dat.setCity("sgsdg");
+		 userRepository.save(dat);
 	}
+
 	 @KafkaListener(topics = "Streams_output")
+
 	    public void receive(@Payload WeatherMetrics data,
 	                        @Headers MessageHeaders headers) {
 		 LOGGER.info("received DataModel='{}'", data);
-
+		 userRepository.save(data);
 	        headers.keySet().forEach(key -> {
 	        	LOGGER.info("{}: {}", key, headers.get(key));
 	        });
