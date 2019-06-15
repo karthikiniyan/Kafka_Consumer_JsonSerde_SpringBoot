@@ -8,12 +8,13 @@ import javax.persistence.Id;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
-public class WeatherMetrics implements Serializable{
+@Document("WeatherHistory")
+public class WeatherHistoryMetrics implements Serializable  {
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6872310476505347035L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	private String id;
@@ -50,9 +51,7 @@ public class WeatherMetrics implements Serializable{
 			System.out.println("Key : " +cw.getKey() +", "+ "value :" + cw.getValue().toString());
 			
 		}
-		return "WeatherMetrics";
+		return "WeatherHistoryMetrics"+ id;
 	}
-	
-	
 
 }
